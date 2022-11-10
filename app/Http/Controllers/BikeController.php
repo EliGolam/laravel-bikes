@@ -15,6 +15,8 @@ class BikeController extends Controller
     public function index()
     {
         //
+        $bikes = Bike::all();
+        return view('bikes.index' , compact('bikes'));
     }
 
     /**
