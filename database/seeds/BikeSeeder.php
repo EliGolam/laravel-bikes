@@ -2,6 +2,9 @@
 
 use Illuminate\Database\Seeder;
 
+use App\Bike;
+use Faker\Generator as Faker;
+
 class BikeSeeder extends Seeder
 {
     /**
@@ -9,8 +12,16 @@ class BikeSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
-        //
+        for ($i=0; $i < 10; $i++) {
+            $bike = new Bike();
+            $bike->brand = $faker->text(16);
+            $bike->model = $faker->text(32);
+            $bike->change = $faker->boolean();
+            $bike->type = $faker->randomElement(['citta', 'montainBike', 'corsa']);
+            $bike->save();
+        }
+
     }
 }
